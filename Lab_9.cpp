@@ -1,35 +1,46 @@
 #include <iostream>
-#include <limits>
 
 using namespace std;
 
-//Función recursiva para calcular el factorial
 int factorial(int n) {
-	if (n < 0) {
-		throw invalid_argument("Error: Factorial de un número negativo mo está definido.");
-	}
-	if (n == 0 || n == 1) {
-		return 1;
-	}
-	return n * factorial(n - 1);
+    if (n < 0) {
+        throw invalid_argument("Error: No existe factorial de un número negativo.");
+    }
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
 }
 
-
+int fibonacci(int n) {
+    if (n < 0) {
+        throw invalid_argument("Error: No existe Fibonacci de un número negativo.");
+    }
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
 
 int main() {
-	setlocale(LC_ALL, "es_ES.UTF-8");
+    try {
+        int numero;
+        cout << "Introduce un número para calcular su factorial: ";
+        cin >> numero;
 
-	try {
-		int numero;
-		cout << "Introduce un número para calcular el factorial: ";
-		cin >> numero;
+        int resultado = factorial(numero);
+        cout << "El factorial de " << numero << " es: " << resultado << endl;
 
-		int resultado = factorial(numero);
-		cout << "El factorial de " << numero << " es: " << resultado << endl;
-	}
-	catch (const exception& e) {
-		cerr << "Excepción capturada: " << e.what() << endl;
-	}
+        cout << "Introduce un número para calcular Fibonacci: ";
+        cin >> numero;
 
-	return 0;
+        int resultadoFib = fibonacci(numero);
+        cout << "El número de Fibonacci " << numero << " es: " << resultadoFib << endl;
+    }
+    catch (const invalid_argument& e) {
+        cerr << e.what() << endl;
+    }
+    catch (...) {
+        cerr << "Se ha producido un error desconocido." << endl;
+    }
+    return 0;
 }
