@@ -1,6 +1,7 @@
 # Lab9
 
 En este laboratorio aprenderás a:
+
 ✅ Utilizar breakpoints (puntos de quiebre) para pausar la ejecución del programa.
 
 ✅ Monitorear variables con la herramienta Watch en Visual Studio Community.
